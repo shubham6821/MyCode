@@ -22,7 +22,7 @@ def antonym_synonym(event):
     #print(soup) (In case you wanna check if your code is working)
     data2=soup.find_all(href=re.compile('synonym'))
     #data2=soup.find_all('ul',{'class':'antonyms'})
-    #don't use soup.find_all('li',{class: blah blah}) doesn't work coz array ke form me save karta hai
+    #don't use soup.find_all('li',{class: blah blah}) doesn't work coz it saves in the form of an array
     for i in data2:
         print(i.string)
 
