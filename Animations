@@ -1,0 +1,63 @@
+from tkinter import *
+import random
+import time
+root= Tk()
+
+canvas= Canvas(root, width = 600, height =600)
+
+canvas.pack()
+
+
+     
+        
+#canvas.create_rectangle(20,20,100,270)
+#canvas.create_polygon(20,20,100,270,150,250,200,150,150,130)
+canvas.create_oval(60,60,180,180, fill="RED")
+
+canvas.create_polygon(20,20,20,80,70,55,fill="GREEN")
+canvas.create_polygon(40,40,40,100,90,75,fill="YELLOW")
+canvas.create_polygon(60,60,60,120,110,95,fill="AQUA")
+canvas.create_polygon(80,80,80,140,130,115,fill="ORANGE")
+canvas.create_polygon(100,100,100,160,150,135,fill="MAGENTA")
+canvas.create_oval(500,500,400,400, fill="BLUE")
+#for i in range (0,120):
+for i in range (0,120):
+    canvas.move(1,5,1)
+    root.update()
+    time.sleep(0.01)
+    canvas.move(2,5,2)
+    root.update()
+    time.sleep(0.01)
+    canvas.move(3,5,3)
+    root.update()
+    time.sleep(0.01)
+    canvas.move(4,5,4)
+    root.update()
+    time.sleep(0.01)
+    canvas.move(5,5,5)
+    root.update()
+    time.sleep(0.01)
+    canvas.move(6,5,6)
+    root.update()
+    time.sleep(0.01)
+    canvas.move(7,-5,-2)
+    root.update()
+    time.sleep(0.01)
+    
+
+"""def randomRectangles(num):
+    for i in range(0,num):
+        x1= random.randrange(30) #keeping stuff half the canvas size
+        y1= random.randrange(30)
+        x2= x1+random.randrange(30) #coz x2 MUST always be greater than x1 for a rectangle
+        y2= y1+random.randrange(30)
+        canvas.create_rectangle(x1,y1,x2,y2,fill="BLUE")"""    
+
+
+
+
+#randomRectangles(150)
+
+#canvas.create_arc(10,10,200,80,extent=45, style =ARC)
+#canvas.create_arc(10,80,200,280,extent=135 , style =ARC)
+root.mainloop()

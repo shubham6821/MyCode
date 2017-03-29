@@ -1,0 +1,54 @@
+import urllib.request
+import re
+from bs4 import*
+from tkinter import*
+
+root=Tk()
+
+theLabel=Label(root,text="This Program Finds The Definitions For You From The Web Using Dictionary.com")
+theLabel.pack()
+label1=Label(root, text="Enter The Word Please:")
+label1.pack()
+
+entryspace=Entry(root)
+entryspace.pack()
+
+def defi(event):
+    url= "http://www.dictionary.com/browse/"
+    #word= input("Enter The Word Bitch: ")
+    word=entryspace.get()
+    url=url+word
+    data= urllib.request.urlopen(url).read()
+    data1= data.decode("utf-8")
+    m= re.search('meta name="description" content="', data1)
+    start= m.end()
+    end= start+300
+    newString=data1[start:end]
+    m=re.search('See more."', newString)
+    end=m.start()-1
+    count=1
+    for i in range(0,count):
+        definition=[newString[0:end]]
+       
+        ans.configure(text="Definition: " + definition[int(i)])
+        count=count+1
+    #definition=newString[0:end]
+    #for j in definition:
+        #ans.configure(text="Definition: " + definition[int(j)])
+    #print(definition)
+
+
+button1= Button(root,text="Click Here")
+button1.bind("<Button-1>",defi)
+button1.pack()
+
+topframe=Frame(root)
+topframe.pack(side=TOP)
+
+ans=Label(topframe) #width=200,height=100) #experiment with these after you're done with learning python
+ans.pack()
+
+#order of theLabel, label1, entryspace, button1 should be before topframe. else you'll see definition above labels
+#YOU CAN'T USE PACK AND GRID SIMULTANEOUSLY
+
+
