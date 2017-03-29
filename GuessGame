@@ -1,0 +1,15 @@
+import random
+z=input("Enter a number between 1-100 for the machine to guess: ")
+guess=random.randint(1,100)
+while True:
+    if int(guess)<int(z):
+        print("Computer guessed" + str(guess)+"which is a bit lower, guessing again!")
+        guess=random.randint(guess,100)
+        continue
+    elif int(guess)>int(z):
+        print("Computer guessed" + str(guess)+"which is a bit higher, guessing again!")
+        guess=random.randint(1,guess)
+        continue
+    elif int(guess)==int(z):
+        print("Whoa! Machine Got it right! It was " + str(guess)+" Wasn't it? Why don't you try a bit harder?")
+        break
