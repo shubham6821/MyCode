@@ -1,0 +1,34 @@
+import requests
+import re
+from bs4 import*
+from tkinter import*
+
+root=Tk()
+
+theLabel=Label(root,text="This Program Finds The Synonyms And Antonyms For You From The Web")
+theLabel.grid(row=0,column=5)
+label1=Label(root, text="Enter The Word Please:")
+label1.grid(row=10,column=5,sticky="E")
+
+entryspace=Entry(root)
+entryspace.grid(row=10,column=6)
+
+#word=input("What are the synonyms antonyms you want?   ")
+
+def antonym_synonym(event):
+    word=entryspace.get()
+    data=requests.get("http://www.synonym.com/antonyms/"+word)
+    soup=BeautifulSoup(data.text,"html.parser")
+    #print(soup) (In case you wanna check if your code is working)
+    data2=soup.find_all(href=re.compile('synonym'))
+    #data2=soup.find_all('ul',{'class':'antonyms'})
+    #don't use soup.find_all('li',{class: blah blah}) doesn't work coz array ke form me save karta hai
+    for i in data2:
+        print(i.string)
+
+button1= Button(root,text="Click Here")
+button1.bind("<Button-1>",antonym_synonym)
+button1.grid(row=10,column=7)
+#view-source:http://www.synonym.com/antonyms/good
+
+#Still Too Many Flaws, eg: Both syno and anto coming together; figure it out in your next weekend
